@@ -1,0 +1,170 @@
+TOKYO-SW01#sh ru
+!
+password-encryption enable
+!
+hostname TOKYO-SW01
+!
+enable password 8 kOdv20vi8uXYh4svEeYtxTb39mFO6VgC
+!
+dns-client enable
+dns-client name-server 192.168.0.5
+dns-client name-server 192.168.3.5
+!
+loop-detect enable
+!
+vlan database
+ vlan 100 name honsha
+ vlan 100 state enable
+ vlan 101 name tokyo
+ vlan 101 state enable
+!
+interface port1.1
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101
+ no shutdown
+!
+interface port1.2
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101
+ no shutdown
+!
+interface port1.3
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101
+ no shutdown
+!
+interface port1.4
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101
+ no shutdown
+!
+interface port1.5
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101
+ no shutdown
+!
+interface port1.6
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101
+ no shutdown
+!
+interface port1.7
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101
+ no shutdown
+!
+interface port1.8
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101
+ no shutdown
+!
+interface port1.9
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101
+ no shutdown
+!
+interface port1.10
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101
+ no shutdown
+!
+interface port1.11
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101
+ no shutdown
+!
+interface port1.12
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101
+ no shutdown
+!
+interface port1.13
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.14
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.15
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.16
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.17
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.18
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.19
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.20
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.21
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.22
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.23
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101
+ static-channel-group 4
+ no shutdown
+!
+interface port1.24
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101
+ static-channel-group 4
+ no shutdown
+!
+interface vlan1
+ ip address 192.168.1.240/23
+!
+interface vlan100
+!
+interface vlan101
+!
+interface sa4
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101
+ no shutdown
+!
+clock timezone JST
+!
+ntpdate server name ntp.nict.jp
+ntpdate interval 6
+!
+http-server enable
+http-server secure enable
+http-server login-timeout 60
+!
+telnet-server enable
+!
+line vty 0 1
+ exec-timeout 60 0
+!
+end
+TOKYO-SW01#
