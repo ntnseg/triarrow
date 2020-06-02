@@ -1,0 +1,437 @@
+Username:
+Password:
+
+SWX3200-28GT Rev.4.00.13 (Tue May 14 18:40:36 2019)
+  Copyright (c) 2018-2019 Yamaha Corporation. All Rights Reserved.
+
+HONSHA-L3SW>enable
+Password:
+HONSHA-L3SW#show running-config
+!
+password-encryption enable
+!
+hostname HONSHA-L3SW
+!
+enable password 8 lzeaO170ZAaxA0mTTwz4Y6.gVbMayL0Y
+!
+dns-client enable
+dns-client name-server 192.168.0.5
+dns-client name-server 192.168.3.5
+!
+access-list 1 10 permit any 192.168.200.0 0.0.0.255 host 203.138.84.171
+access-list 1 20 permit any any 192.168.200.0 0.0.0.255
+access-list 1 30 deny tcp 192.168.200.0 0.0.0.255 192.168.0.0 0.0.255.255 syn
+!
+vlan database
+ vlan 100 name honsha
+ vlan 101 name tokyo
+ vlan 200 name sem1
+!
+interface port1.1
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 101,200
+ switchport trunk native vlan 100
+ static-channel-group 1
+ no shutdown
+!
+interface port1.2
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 101,200
+ switchport trunk native vlan 100
+ static-channel-group 2
+ no shutdown
+!
+interface port1.3
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 101,200
+ switchport trunk native vlan 100
+ static-channel-group 3
+ no shutdown
+!
+interface port1.4
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 100
+ switchport trunk native vlan 101
+ static-channel-group 4
+ no shutdown
+!
+interface port1.5
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.6
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.7
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.8
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.9
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.10
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.11
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.12
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.13
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.14
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.15
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.16
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.17
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.18
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.19
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.20
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.21
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 100
+ switchport trunk native vlan 101
+ no shutdown
+!
+interface port1.22
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 100
+ switchport trunk native vlan 101
+ no shutdown
+!
+interface port1.23
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 100
+ switchport trunk native vlan 101
+ no shutdown
+!
+interface port1.24
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 100
+ switchport trunk native vlan 200
+ no shutdown
+!
+interface port1.25
+ switchport
+ switchport mode access
+ no shutdown
+!
+interface port1.26
+ switchport
+ switchport mode access
+ no shutdown
+!
+interface port2.1
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 101,200
+ switchport trunk native vlan 100
+ static-channel-group 1
+ no shutdown
+!
+interface port2.2
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 101,200
+ switchport trunk native vlan 100
+ static-channel-group 2
+ no shutdown
+!
+interface port2.3
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 101,200
+ switchport trunk native vlan 100
+ static-channel-group 3
+ no shutdown
+!
+interface port2.4
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 100
+ switchport trunk native vlan 101
+ static-channel-group 4
+ no shutdown
+!
+interface port2.5
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port2.6
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port2.7
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port2.8
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port2.9
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port2.10
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port2.11
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port2.12
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port2.13
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port2.14
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port2.15
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port2.16
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port2.17
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port2.18
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port2.19
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port2.20
+ switchport
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port2.21
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 100
+ switchport trunk native vlan 101
+ no shutdown
+!
+interface port2.22
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 100
+ switchport trunk native vlan 101
+ no shutdown
+!
+interface port2.23
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 100
+ switchport trunk native vlan 101
+ no shutdown
+!
+interface port2.24
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 100
+ switchport trunk native vlan 200
+ no shutdown
+!
+interface port2.25
+ switchport
+ switchport mode access
+ no shutdown
+!
+interface port2.26
+ switchport
+ switchport mode access
+ no shutdown
+!
+interface vlan1
+ no switchport
+ ip address 192.168.255.253/24
+ no shutdown
+!
+interface vlan100
+ no switchport
+ ip address 192.168.0.253/24
+ no shutdown
+!
+interface vlan101
+ no switchport
+ ip address 192.168.1.253/24
+ no shutdown
+!
+interface vlan200
+ no switchport
+ ip address 192.168.200.253/24
+ no shutdown
+!
+interface sa1
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 101,200
+ switchport trunk native vlan 100
+ no shutdown
+!
+interface sa2
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 101,200
+ switchport trunk native vlan 100
+ no shutdown
+!
+interface sa3
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 101,200
+ switchport trunk native vlan 100
+ no shutdown
+!
+interface sa4
+ switchport
+ switchport mode trunk
+ switchport trunk allowed vlan add 100
+ switchport trunk native vlan 101
+ no shutdown
+!
+vlan access-map sem1
+ match access-list 1
+!
+vlan filter sem1 200
+!
+ip route 0.0.0.0/0 192.168.0.251
+!
+clock timezone JST
+!
+ntpdate server name ntp.nict.jp
+ntpdate interval 6
+!
+http-server enable
+http-server login-timeout 60
+http-proxy enable
+!
+telnet-server enable
+telnet-server interface vlan100
+!
+line con 0
+ exec-timeout 60 0
+line vty 0 1
+ exec-timeout 60 0
+line vty 2 7
+!
+end
+
+HONSHA-L3SW#
