@@ -1,12 +1,4 @@
-Username:
-Password:
-
-SWX2210-24G Rev.1.02.03 (Fri Feb 15 15:39:23 2019)
-  Copyright (c) 2018-2019 Yamaha Corporation. All Rights Reserved.
-
-HONSHA-SW01>enable
-Password: **********
-HONSHA-SW01#sh ru
+HONSHA-SW01#show run
 !
 password-encryption enable
 !
@@ -25,134 +17,135 @@ vlan database
  vlan 100 state enable
 !
 interface port1.1
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.2
- switchport mode trunk ingress-filter enable
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.3
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.4
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.5
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.6
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.7
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.8
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.9
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.10
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.11
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.12
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.13
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.14
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.15
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.16
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.17
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.18
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.19
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.20
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.21
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.22
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ switchport mode access
+ switchport access vlan 100
  no shutdown
 !
 interface port1.23
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ description ### to HONSHA-L3SW sa2 ###
+ switchport trunk allowed vlan add 100,101,199
  static-channel-group 2
  no shutdown
 !
 interface port1.24
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ description ### to HONSHA-L3SW sa2 ###
+ switchport trunk allowed vlan add 100,101,199
  static-channel-group 2
  no shutdown
 !
 interface vlan1
- ip address 192.168.0.240/24
 !
 interface vlan100
+ ip address 192.168.0.240/24
 !
 interface sa2
- switchport mode trunk ingress-filter enable
- switchport trunk allowed vlan add 100
+ description ### to HONSHA-L3SW sa2 ###
+ switchport trunk allowed vlan add 100,101,199
  no shutdown
 !
 clock timezone JST
@@ -170,4 +163,3 @@ line vty 0 1
  exec-timeout 60 0
 !
 end
-HONSHA-SW01#

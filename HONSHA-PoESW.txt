@@ -1,0 +1,135 @@
+!
+password-encryption enable
+!
+hostname HONSHA-PoESW
+!
+enable password 8 uhnR$Uun$n.gDX28o3YaZ4zRyDHei1nI
+!
+dns-client enable
+dns-client name-server 192.168.0.5
+dns-client name-server 192.168.3.5
+!
+loop-detect enable
+!
+vlan database
+ vlan 100 name honsha
+ vlan 100 state enable
+ vlan 199 name musen
+ vlan 199 state enable
+ vlan 200 name sem1
+--More-- HONSHA-PoESW#
+HONSHA-PoESW#ter len 0
+HONSHA-PoESW#
+HONSHA-PoESW#show tech-support HONSHA-PoESW#show tech-support 
+#
+# Information for Yamaha Technical Support
+#
+
+*** show running-config ***
+!
+password-encryption enable
+!
+hostname HONSHA-PoESW
+!
+enable password 8 uhnR$Uun$n.gDX28o3YaZ4zRyDHei1nI
+!
+dns-client enable
+dns-client name-server 192.168.0.5
+dns-client name-server 192.168.3.5
+!
+loop-detect enable
+!
+vlan database
+ vlan 100 name honsha
+ vlan 100 state enable
+ vlan 199 name musen
+ vlan 199 state enable
+ vlan 200 name sem1
+ vlan 200 state enable
+ vlan 201 name project
+ vlan 201 state enable
+!
+interface port1.1
+ description "### to AP01 ###"
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100,199-201
+ no shutdown
+!
+interface port1.2
+ description "### to AP02 ###"
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100,199-201
+ no shutdown
+!
+interface port1.3
+ description "### to AP03 ###"
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100,199-201
+ no shutdown
+!
+interface port1.4
+ description "### to AP04 ###"
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100,199-201
+ no shutdown
+!
+interface port1.5
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100,199-201
+ no shutdown
+!
+interface port1.6
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100,199-201
+ no shutdown
+!
+interface port1.7
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100,199-201
+ no shutdown
+!
+interface port1.8
+ description "\"\\\"### to test ###\\\"\""
+ switchport mode access
+ switchport access vlan 100
+ no shutdown
+!
+interface port1.9
+ description "\"\\\"### to HONSHA-L3SW port1.5 ###\\\"\""
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100,199-201
+ static-channel-group 5
+ no shutdown
+!
+interface port1.10
+ description "\"\\\"### to HONSHA-L3SW port2.5 ###\\\"\""
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100,199-201
+ static-channel-group 5
+ no shutdown
+!
+interface vlan1
+!
+interface vlan100
+ ip address 192.168.0.243/24
+!
+interface vlan199
+!
+interface vlan200
+!
+interface vlan201
+!
+interface sa5
+ description ### to HONSHA-L3SW sa5 ###
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100,199-201
+ no shutdown
+!
+clock timezone JST
+!
+http-server enable
+http-server secure enable
+!
+telnet-server enable
+!
+end
