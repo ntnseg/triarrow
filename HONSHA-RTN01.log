@@ -1,0 +1,41 @@
+show confshow config 
+# RTX1210 Rev.14.01.33 (Fri Nov  2 14:31:39 2018)
+# MAC Address : ac:44:f2:6b:68:f4, ac:44:f2:6b:68:f5, ac:44:f2:6b:68:f6
+# Memory 256Mbytes, 3LAN, 1BRI
+# main:  RTX1210 ver=00 serial=S4H162207 MAC-Address=ac:44:f2:6b:68:f4 MAC-Addr
+ess=ac:44:f2:6b:68:f5 MAC-Address=ac:44:f2:6b:68:f6
+# Reporting Date: Jun 6 18:09:35 2020
+login password *
+administrator password *
+login user tri-arrow *
+console prompt HONSHA-RTN01
+login timer 3600
+ip route default gateway 192.168.0.254
+ip route 62.109.192.0/18 gateway 192.168.0.250
+ip route 64.68.96.0/19 gateway 192.168.0.250
+ip route 66.114.160.0/20 gateway 192.168.0.250
+ip route 66.163.32.0/19 gateway 192.168.0.250
+ip route 114.29.192.0/19 gateway 192.168.0.250
+ip route 173.243.0.0/20 gateway 192.168.0.250
+ip route 192.168.0.0/24 gateway 192.168.0.253
+ip route 192.168.1.0/24 gateway 192.168.0.253
+ip route 192.168.199.0/24 gateway 192.168.0.253
+ip route 192.168.200.0/24 gateway 192.168.0.253
+---‚Â‚Ã‚­---            ip route 192.168.201.0/24 gateway 192.168.0.253
+ip route 207.182.160.0/19 gateway 192.168.0.250
+ip route 208.8.81.0/24 gateway 192.168.0.250
+ip route 209.197.192.0/19 gateway 192.168.0.250
+ip route 210.4.192.0/20 gateway 192.168.0.250
+ip filter directed-broadcast on
+ip icmp redirect send off
+ip lan1 address 192.168.0.251/24
+switch control use lan1 on terminal=on
+lan link-aggregation static 1 lan1:1 lan1:2
+telnetd service on
+telnetd host 192.168.0.188
+dns server 192.168.0.250
+schedule at 1 */* 05:00 * ntpdate ntp.nict.jp
+httpd host any
+dashboard accumulate traffic on
+HONSHA-RTN01# 
+HONSHA-RTN01# 

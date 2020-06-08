@@ -1,0 +1,84 @@
+
+HONSHA-FWN01# show confshow config 
+# FWX120 Rev.11.03.27 (Fri Apr 20 08:57:10 2018)
+# MAC Address : ac:44:f2:6b:cc:b5, ac:44:f2:6b:cc:b6
+# Memory 256Mbytes, 2LAN
+# main:  FWX120 ver=00 serial=S42057968 MAC-Address=ac:44:f2:6b:cc:b5 MAC-Addre
+ss=ac:44:f2:6b:cc:b6
+# Reporting Date: Jun 6 18:40:24 2020
+login password *
+administrator password *
+login user tri-arrow *
+console prompt HONSHA-FWN01
+login timer 3600
+ip route default gateway dhcp lan2
+ip route 192.168.0.0/24 gateway 192.168.0.251
+ip route 192.168.1.0/24 gateway 192.168.0.251
+ip route 192.168.199.0/24 gateway 192.168.0.251
+ip route 192.168.200.0/24 gateway 192.168.0.251
+ip route 192.168.201.0/24 gateway 192.168.0.251
+ipv6 routing on
+ipv6 route default gateway dhcp lan2
+ipv6 prefix 1 dhcp-prefix@lan2::/64
+ip lan1 address 192.168.0.250/24
+ipv6 lan1 address dhcp-prefix@lan2::1/64
+---?A‡L--            ipv6 lan1 rtadv send 1 o_flag=on
+ip lan2 address dhcp
+ip lan2 nat descriptor 1
+ipv6 lan2 secure filter in 1 2 3 4
+ipv6 lan2 secure filter out dynamic 1 2
+ipv6 lan2 dhcp service client
+provider lan1 name LAN:
+provider lan2 name ipv6 PRV/0/4/0/0/1/1:NUROANZXX^_[h
+ip filter 500000 restrict * * * * *
+ip inbound filter 1001 reject-nolog * * tcp,udp * 135
+ip inbound filter 1002 reject-nolog * * tcp,udp 135 *
+ip inbound filter 1003 reject-nolog * * tcp,udp * netbios_ns-netbios_ssn
+ip inbound filter 1004 reject-nolog * * tcp,udp netbios_ns-netbios_ssn *
+ip inbound filter 1005 reject-nolog * * tcp,udp * 445
+ip inbound filter 1006 reject-nolog * * tcp,udp 445 *
+ip inbound filter 1007 reject-nolog 192.168.100.0/24 * * * *
+ip inbound filter 1099 pass-nolog * * * * *
+ip policy interface group 101 name=Private local lan1
+ip policy address group 101 name=Private 192.168.0.0/24
+ip policy address group 102 name=Any *
+ip policy service group 101 name="Open Services"
+ip policy service group 102 name=General dns
+---?A‡L--            ip policy service group 103 name=Mail pop3 smtp submission
+ip policy service group 104 name=IPsec ike esp
+ip policy filter 1100 reject-nolog lan1 * * * *
+ip policy filter 1110 pass-nolog * * * * 102
+ip policy filter 1122 static-pass-nolog * lan1 * * *
+ip policy filter 1123 static-pass-nolog * local * * *
+ip policy filter 1124 static-pass-log * * 192.168.0.0/24 * http
+ip policy filter 1130 pass-nolog * tunnel* * * *
+ip policy filter 1150 pass-nolog * pp1 * * *
+ip policy filter 1500 reject-nolog pp* * * * *
+ip policy filter 1520 pass-log * lan1 * * 101
+ip policy filter 1530 static-pass-nolog * local * * 104
+ip policy filter 1600 reject-nolog tunnel* * * * *
+ip policy filter 1610 pass-nolog * 101 * * *
+ip policy filter 1630 pass-nolog * tunnel* * * *
+ip policy filter 1660 reject-nolog * pp* * * *
+ip policy filter 1700 pass-nolog local * * * *
+ip policy filter 1710 static-pass-nolog * lan1 * * *
+ip policy filter 1720 static-pass-nolog * pp* * * 104
+ip policy filter 3000 reject-nolog * * * * *
+ip policy filter set 101 name="Internet Access" 1100 [1110 1123 [1124] 1122 115
+0 1130] 1600 [1630 1610 1660] 1500 [1520 1530] 1700 [1710 1720] 3000
+---?A‡L--            nat descriptor type 1 masquerade
+nat descriptor address outer 1 primary
+nat descriptor address inner 1 auto
+nat descriptor masquerade incoming 1 reject 
+ipv6 filter 1 pass * * udp domain *
+ipv6 filter 2 pass * * icmp6 * *
+ipv6 filter 3 pass * * udp 547 *
+ipv6 filter 4 pass * * icmp-nd
+ipv6 filter dynamic 1 * * tcp
+ipv6 filter dynamic 2 * * udp
+telnetd host lan
+dns service recursive
+dns server 240d:10:4:5::33 240d:10:4:6::49 118.238.201.33 118.238.201.49
+dns private address spoof on
+statistics traffic on
+HONSHA-FWN01# 
