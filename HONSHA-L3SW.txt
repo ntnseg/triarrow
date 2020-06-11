@@ -1,3 +1,4 @@
+HONSHA-L3SW#show running-config 
 !
 password-encryption enable
 !
@@ -11,8 +12,14 @@ dns-client name-server 192.168.3.5
 !
 access-list 1 10 permit any 192.168.200.0 0.0.0.255 host 203.138.84.171
 access-list 1 20 permit any 192.168.201.0 0.0.0.255 host 203.138.84.171
-access-list 1 30 deny any 192.168.200.0 0.0.0.255 any
-access-list 1 40 deny any 192.168.201.0 0.0.0.255 any
+access-list 1 30 permit any any 192.168.200.0 0.0.0.255
+access-list 1 40 permit any any 192.168.201.0 0.0.0.255
+access-list 1 50 deny any 192.168.200.0 0.0.0.255 192.168.0.0 0.0.0.255
+access-list 1 60 deny any 192.168.200.0 0.0.0.255 192.168.1.0 0.0.0.255
+access-list 1 70 deny any 192.168.200.0 0.0.0.255 192.168.199.0 0.0.0.255
+access-list 1 80 deny any 192.168.201.0 0.0.0.255 192.168.0.0 0.0.0.255
+access-list 1 90 deny any 192.168.201.0 0.0.0.255 192.168.1.0 0.0.0.255
+access-list 1 100 deny any 192.168.201.0 0.0.0.255 192.168.199.0 0.0.0.255
 !
 dhcp-server enable
 !
@@ -468,3 +475,5 @@ line vty 0 1
 line vty 2 7
 !
 end
+
+HONSHA-L3SW#

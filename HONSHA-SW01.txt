@@ -1,4 +1,4 @@
-HONSHA-SW01#show run
+HONSHA-SW01#show running-config HONSHA-SW01#show running-config 
 !
 password-encryption enable
 !
@@ -15,6 +15,10 @@ loop-detect enable
 vlan database
  vlan 100 name honsha
  vlan 100 state enable
+ vlan 101 name tokyo
+ vlan 101 state enable
+ vlan 199 name musen
+ vlan 199 state enable
 !
 interface port1.1
  switchport mode access
@@ -127,14 +131,14 @@ interface port1.22
  no shutdown
 !
 interface port1.23
- description ### to HONSHA-L3SW sa2 ###
- switchport trunk allowed vlan add 100,101,199
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101,199
  static-channel-group 2
  no shutdown
 !
 interface port1.24
- description ### to HONSHA-L3SW sa2 ###
- switchport trunk allowed vlan add 100,101,199
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101,199
  static-channel-group 2
  no shutdown
 !
@@ -143,9 +147,14 @@ interface vlan1
 interface vlan100
  ip address 192.168.0.240/24
 !
+interface vlan101
+!
+interface vlan199
+!
 interface sa2
- description ### to HONSHA-L3SW sa2 ###
- switchport trunk allowed vlan add 100,101,199
+ description "### to HONSHA-L3SW sa2 ###"
+ switchport mode trunk ingress-filter enable
+ switchport trunk allowed vlan add 100-101,199
  no shutdown
 !
 clock timezone JST
@@ -163,3 +172,4 @@ line vty 0 1
  exec-timeout 60 0
 !
 end
+HONSHA-SW01#
